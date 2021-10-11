@@ -22,7 +22,7 @@ export default class Demo extends Phaser.Scene {
     }, 15000);
     this.addTween();
 
-    const res = await fetch("http://localhost:3002");
+    const res = await fetch("http://40.113.142.148:3002");
     const data = (await res.json()) as DisplayData;
     this.displayData = data;
     console.log(data);
@@ -37,7 +37,7 @@ export default class Demo extends Phaser.Scene {
       this.updateLogoPosition();
     });
 
-    const evtSource = new EventSource("http://localhost:3002/sse");
+    const evtSource = new EventSource("http://40.113.142.148:3002/sse");
     evtSource.onmessage = (e: MessageEvent) => {
       const data = JSON.parse(e.data) as DisplayData;
       this.displayData = data;
